@@ -149,3 +149,44 @@ def circularArrayRotation():
     return {
         "result" : arr_baru
     }
+
+@app.route('/kaprekarNum', methods=['GET'])
+def kaprekarNumbers():
+    p = request.args.get("p", type=int)
+    q = request.args.get("q", type=int)
+    res = []
+    # if(p.isdigit() and q.isdigit()):
+    if type(p)==int and type(q)==int:
+        if q>p:
+            for i in range(p, q+1):
+                a=i**2
+                d=10**len(str(i))
+                l=a//d
+                r=a%d
+                if l+r==i:
+                    res.append(i)
+            if res ==[]:
+                return "INVALID RANGE", 400
+            else:
+                return {"Numbers":res}
+        else:
+            return "INVALID RANGE", 400
+    else:
+        return "DANGER, input contains number only", 400
+
+@app.route("absolutepermutation", methods=["POST", "GET", "PUT"])
+def absolutepermutation():
+    body = request.get_json()
+    queries = body["queries"]
+    for i in queries:
+        for n,k in i.items():
+            print(x,y)
+            a=list(range(n+1))
+            if k==0: return a[1:]
+            if n%2==1: return [-1]
+            for i in range(1,n-k+1):
+                if a[i]==a[i+k]=k:
+                    a[i],a[i+k]=a[i+k],a[i]
+                    
+
+        
